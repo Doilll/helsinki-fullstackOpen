@@ -19,12 +19,16 @@ function App() {
       }
     ]
   }
+  const sumOfexercises = () => 
+    course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises
 
   return (
     <div>
       <Header course={course.name} />
-      <Content parts={course.parts} />
-      <Total parts={course.parts} />
+      <Content parts={course.parts[0].name} partsExcercise={course.parts[0].exercises} />
+      <Content parts={course.parts[1].name} partsExcercise={course.parts[1].exercises} />
+      <Content parts={course.parts[2].name} partsExcercise={course.parts[2].exercises} />
+      <Total numberOfExcercise={sumOfexercises()} />
     </div>
   );
 }
@@ -38,21 +42,29 @@ function Header({course}) {
   )
 }
 
-function Content({parts}) {
+function Content({parts,partsExcercise}) {
   return(
     <>
-      
+      <p>course name: {parts}</p>
+      <p>Exercise: {partsExcercise}</p>
     </>
   )
 }
 
-function Total({parts}) {
+function Parts({parts}) {
   return(
     <>
+      <p></p>
       <p>
         Number of exercises {parts}
       </p>
     </>
+  )
+}
+
+function Total({numberOfExcercise}) {
+  return(
+    <p>Number of excercises: {numberOfExcercise}</p>
   )
 }
 
