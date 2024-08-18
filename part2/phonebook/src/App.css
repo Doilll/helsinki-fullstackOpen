@@ -1,0 +1,6 @@
+.added {
+    border: 2px solid green;
+    padding: 5px;
+    color: green;
+    background-color: rgb(202, 197, 197);
+}
