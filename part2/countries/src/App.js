@@ -21,8 +21,6 @@ export default function App() {
     return countries.filter(country => country.name.common.toLowerCase().includes(search.toLowerCase()))
   }
 
-  
-
   return (
     <div>
       <h1>Data Negara</h1>
@@ -33,22 +31,21 @@ export default function App() {
 }
 
 function ShowCountries({countries}) {
-  if(countries.length > 10) {
-    return <p>Too many countries to show,find keyword to filter</p>
+  if(countries.length > 10 || countries.length === 0) {
+    return <p>no countries found</p>
   }
   else if(countries.length === 1) {
     return(
       <section>
         <h2>{countries[0].name.common}</h2>
-        <p>Area: {countries[0].area}</p>
+        <p>No.Area: {countries[0].area}</p>
         <p>Population: {countries[0].population}</p>
         <p>Capital: {countries[0].capital}</p>
-        <img src={`${countries[0].flags.png}`} alt={`${countries[0].flags.alt}`} />
+        <p>Bendera</p>
+        <img style={{border: '2px solid black',margin: '5px'}} src={`${countries[0].flags.png}`} alt={`${countries[0].flags.alt}`} />
+        <img src={countries[0].coatOfArms.png} alt='lambang' width='150px' />
       </section>
     )
-  }
-  else if(countries.length === 0) {
-    return <p>No countries found</p>
   }
 
   else {
